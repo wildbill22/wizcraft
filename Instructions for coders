@@ -1,0 +1,21 @@
+Setting Up GitHub
+
+Visit the GitHub site and create an account.
+E-mail me your account username.
+While you wait for me to manually add you as a collaborator on the project, install the GitHub application on your Mac or PC.
+Once I've E-mailed you back saying that you have access to the project on GitHub, you visit the project page.
+On the right side of the page, you'll find a button to "Clone in Desktop". Click this.
+The GitHub app will open.
+Log in if it asks you to, and specify a convenient location on your computer for the mod's files (don't use the 
+Eclipse project folder for this).
+You now have the most current files from the GitHub project page on your computer (this is your local repository).
+You should have created an Eclipse project for wizcraft already.
+Copy the folder src/main from you local GitHub repository to the src/main folder in your Eclipse project.
+Make edits to the files in Eclipse, add files, etc.
+Copy those changed files over to your local repository.
+Open the GitHub App.
+Select the local repository on the left.
+Review the changes you have made.
+Enter a description of the commit you are making.
+Press Commit and then Sync.
+You can see you commit now on the GitHub website.
