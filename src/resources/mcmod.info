@@ -1,0 +1,16 @@
+[
+{
+  "modid": "wildbill22_wizcraft",
+  "name": "Wizcraft",
+  "description": "Harry Potter we love you!",
+  "version": "a0.0.1",
+  "mcversion": "1.7.10",
+  "url": "https://sites.google.com/site/wizcraft/",
+  "updateUrl": "",
+  "authorList": ["wildbill22, LRA10, Joebendude, PeiPai, Colonel_Miaou123"],
+  "credits": "baddaspig",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

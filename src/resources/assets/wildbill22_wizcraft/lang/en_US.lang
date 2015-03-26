@@ -1,0 +1,11 @@
+#Items
+#item.wildbill22_wizcraft_spear.name=Spear
+
+#Blocks (tiles)
+#tile.charredGround.name=Charred Ground
+
+#Entities
+#entity.wildbill22_wizcraft.creeperDragon.name=Crepitus Draco
+
+#General
+itemGroup.Wizcraft=Wizcraft
