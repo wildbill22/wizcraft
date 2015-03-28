@@ -1,19 +1,12 @@
 package net.wildbill22.wizcraft;
 
 import net.minecraftforge.common.MinecraftForge;
-import net.wildbill22.draco.blocks.ModBlocks;
-import net.wildbill22.draco.crafting.ModCraftingRecipes;
-import net.wildbill22.draco.entities.ModEntities;
-import net.wildbill22.draco.generation.WorldGenDracoAnimus;
-import net.wildbill22.draco.generation.villages.VillageBiomes;
-import net.wildbill22.draco.generation.villages.VillageGenReplacer;
-import net.wildbill22.draco.items.ModItems;
-import net.wildbill22.draco.items.weapons.ModWeapons;
-import net.wildbill22.draco.lib.LogHelper;
-import net.wildbill22.draco.lib.REFERENCE;
-import net.wildbill22.draco.network.UpdateDragonPlayerPacket;
-import net.wildbill22.draco.proxies.CommonProxy;
-import net.wildbill22.draco.tile_entity.ModTileEntities;
+import net.wildbill22.wizcraft.blocks.ModBlocks;
+// import net.wildbill22.wizcraft.crafting.ModCraftingRecipes;
+import net.wildbill22.wizcraft.items.ModItems;
+import net.wildbill22.wizcraft.lib.LogHelper;
+import net.wildbill22.wizcraft.lib.Reference;
+import net.wildbill22.wizcraft.proxies.CommonProxy;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -32,16 +25,16 @@ import cpw.mods.fml.relauncher.Side;
  *
  */
 //@Mod(modid = REFERENCE.MODID, name = REFERENCE.NAME, version = REFERENCE.VERSION, guiFactory = "net.wildbill22.draco.client.gui.ModGuiFactory")
-@Mod(modid = REFERENCE.MODID, name = REFERENCE.NAME, version = REFERENCE.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
 
 public class WizcraftMod {
 
 	@SidedProxy(clientSide = "net.wildbill22.wizcraft.proxies.ClientProxy", serverSide = "net.wildbill22.wizcraft.proxies.CommonProxy")
-	public static CommonProxy dracoProxy;
+	public static CommonProxy wizcraftProxy;
 
 	public static SimpleNetworkWrapper modChannel;
 
-	@Instance(REFERENCE.MODID)
+	@Instance(Reference.MODID)
 	public static WizcraftMod instance;
 	
 	@EventHandler
@@ -51,8 +44,8 @@ public class WizcraftMod {
 		ModItems.preInit();
 		ModBlocks.preInit();
 //    		ModTileEntities.modRegistry();
-		ModEntities.preInit();
-		ModWeapons.preInit();
+//		ModEntities.preInit();
+//		ModWeapons.preInit();
 //		dracoProxy.registerRenderer();
 //		VillageBiomes.preInit(event);
 //		setupNetwork();
@@ -60,16 +53,16 @@ public class WizcraftMod {
 
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
-		ModCraftingRecipes.init();		
-		ModWeapons.init();
+//		ModCraftingRecipes.init();		
+//		ModWeapons.init();
 //		GameRegistry.registerWorldGenerator(new WorldGenDracoAnimus(), 100);
-		dracoProxy.registerSounds();
-		dracoProxy.registerSubscriptions();
-		FMLCommonHandler.instance().bus().register(new Configs());
-		if (Configs.VILLAGE.village_gen_enabled) {
-			LogHelper.info("Registering replacer for village generation.");
-			MinecraftForge.TERRAIN_GEN_BUS.register(new VillageGenReplacer());
-		}
+		wizcraftProxy.registerSounds();
+		wizcraftProxy.registerSubscriptions();
+//		FMLCommonHandler.instance().bus().register(new Configs());
+//		if (Configs.VILLAGE.village_gen_enabled) {
+//			LogHelper.info("Registering replacer for village generation.");
+//			MinecraftForge.TERRAIN_GEN_BUS.register(new VillageGenReplacer());
+//		}
 	}
 
 	@EventHandler
@@ -79,9 +72,9 @@ public class WizcraftMod {
 	
 	// For future use:
 	private void setupNetwork() {
-		modChannel = NetworkRegistry.INSTANCE.newSimpleChannel(REFERENCE.MODID);
+		modChannel = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MODID);
 
 		int id = 0;
-		modChannel.registerMessage(UpdateDragonPlayerPacket.Handler.class, UpdateDragonPlayerPacket.class, id++, Side.SERVER);
+//		modChannel.registerMessage(UpdateDragonPlayerPacket.Handler.class, UpdateDragonPlayerPacket.class, id++, Side.SERVER);
 	}
 }
