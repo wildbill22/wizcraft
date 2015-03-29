@@ -1,4 +1,5 @@
 package net.wildbill22.wizcraft.client.renderer;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;

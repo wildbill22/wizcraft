@@ -23,6 +23,9 @@ public class BlockGoal extends BlockContainer {
 
 	public BlockGoal() {
         super(Material.portal);
+		setHardness(2.5F);
+		setStepSound(Block.soundTypeCloth);
+		setResistance(3.0F);
     }
 	
 	@Override

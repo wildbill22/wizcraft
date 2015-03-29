@@ -13,7 +13,8 @@ public class BlockQuidditchChest extends ModBlocks {
 
 	protected BlockQuidditchChest() {
 		super(name, name, Material.wood);
-		setHardness(1.0F);
+		setHardness(2.5F);
+		setStepSound(Block.soundTypeWood);
 		setResistance(3.0F);
     }
 		

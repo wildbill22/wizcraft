@@ -2,8 +2,11 @@ package net.wildbill22.wizcraft;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.wildbill22.wizcraft.blocks.ModBlocks;
+import net.wildbill22.wizcraft.entity.ModEntities;
+import net.wildbill22.wizcraft.handler.KeyInputHandler;
 // import net.wildbill22.wizcraft.crafting.ModCraftingRecipes;
 import net.wildbill22.wizcraft.items.ModItems;
+import net.wildbill22.wizcraft.lib.KeyBindings;
 import net.wildbill22.wizcraft.lib.LogHelper;
 import net.wildbill22.wizcraft.lib.Reference;
 import net.wildbill22.wizcraft.proxies.CommonProxy;
@@ -44,18 +47,21 @@ public class WizcraftMod {
 		ModItems.preInit();
 		ModBlocks.preInit();
 //    		ModTileEntities.modRegistry();
-//		ModEntities.preInit();
+		ModEntities.preInit();
+		FMLCommonHandler.instance().bus().register(new KeyInputHandler());
+		KeyBindings.preInit();
 //		ModWeapons.preInit();
-//		dracoProxy.registerRenderer();
+		wizcraftProxy.registerRenderer();
 //		VillageBiomes.preInit(event);
 //		setupNetwork();
 	}
 
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
-//		ModCraftingRecipes.init();		
+		ModCraftingRecipes.init();		
 //		ModWeapons.init();
 //		GameRegistry.registerWorldGenerator(new WorldGenDracoAnimus(), 100);
+		KeyBindings.preInit();
 		wizcraftProxy.registerSounds();
 		wizcraftProxy.registerSubscriptions();
 //		FMLCommonHandler.instance().bus().register(new Configs());

@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.wildbill22.wizcraft.items.ModItems;
  
 public class EntityQuaffle extends Entity {
+	public static final String name = "quaffle";
     int ticksInAir;
     double bounceFactor;
     boolean collided;

@@ -16,11 +16,29 @@ public class ModItems extends Item {
 
 	// All items in the mod:
 	public static Item quaffle;
+	public static Item snitch;
+	public static Item snitchGlove;
+	public static Item broom;
+	public static Item bat;
+	public static Item bludgerGlove;
+	public static Item bludger;
 	
 	public static void preInit() {
 		quaffle = new ItemQuaffle();
+		snitch = new ItemSnitch();
+		snitchGlove = new ItemSnitchGlove();
+		broom = new ItemBroom();
+		bat = new ItemBat();
+		bludgerGlove = new ItemBludgerGlove();
+		bludger = new ItemBludger();
 		
 		GameRegistry.registerItem(quaffle, ItemQuaffle.name);
+		GameRegistry.registerItem(snitch, ItemSnitch.name);
+		GameRegistry.registerItem(snitchGlove, ItemSnitchGlove.name);
+		GameRegistry.registerItem(broom, ItemBroom.name);
+		GameRegistry.registerItem(bat, ItemBat.name);
+		GameRegistry.registerItem(bludgerGlove, ItemBludgerGlove.name);
+		GameRegistry.registerItem(bludger, ItemBludger.name);
 	}
 
 	public static void init() {
