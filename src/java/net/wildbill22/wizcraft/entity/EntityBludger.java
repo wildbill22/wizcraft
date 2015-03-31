@@ -93,6 +93,7 @@ public class EntityBludger extends EntityFlying {
 //		return 0.0F;
 //	}
 
+	// So we want it not to take damage?
     protected void damageEntity(DamageSource p_70665_1_, float p_70665_2_) {
     }
 

@@ -2,6 +2,7 @@ package net.wildbill22.wizcraft.items;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
@@ -22,6 +23,21 @@ public class ModItems extends Item {
 	public static Item bat;
 	public static Item bludgerGlove;
 	public static Item bludger;
+	// Armor
+	public static ArmorMaterial headBandMaterial;
+	public static ArmorMaterial jerseyMaterial;
+	public static Item headband;
+	public static Item headbandKeeper;
+	public static Item headbandSeeker;
+	public static Item headbandChaser;
+	public static Item headbandBeater;
+	public static Item jersey;
+	public static Item jerseyYellow;
+	public static Item jerseyBlue;
+	public static Item jerseyRed;
+	public static Item jerseyGreen;
+	public static Item jerseyOrange;
+	public static Item jerseyPurple;
 	
 	public static void preInit() {
 		quaffle = new ItemQuaffle();
@@ -39,6 +55,26 @@ public class ModItems extends Item {
 		GameRegistry.registerItem(bat, ItemBat.name);
 		GameRegistry.registerItem(bludgerGlove, ItemBludgerGlove.name);
 		GameRegistry.registerItem(bludger, ItemBludger.name);
+
+
+		// Jersey and headbands
+		// name, durability (same as leather), damageReduction, enchantability
+		jerseyMaterial = EnumHelper.addArmorMaterial("jerseyMaterial", 5, new int[] { 1, 3, 2, 1 }, 15);		
+		GameRegistry.registerItem(jersey = new ItemHeadband(0, "jersey", jerseyMaterial, "jersey", 0), "jersey");
+		GameRegistry.registerItem(jerseyYellow = new ItemHeadband(0, "jerseyYellow", jerseyMaterial, "jerseyYellow", 0), "jerseyYellow");
+		GameRegistry.registerItem(jerseyBlue = new ItemHeadband(0, "jerseyBlue", jerseyMaterial, "jerseyBlue", 0), "jerseyBlue");
+		GameRegistry.registerItem(jerseyRed = new ItemHeadband(0, "jerseyRed", jerseyMaterial, "jerseyRed", 0), "jerseyRed");
+		GameRegistry.registerItem(jerseyGreen = new ItemHeadband(0, "jerseyGreenn", jerseyMaterial, "jerseyGreen", 0), "jerseyGreen");
+		GameRegistry.registerItem(jerseyOrange = new ItemHeadband(0, "jerseyOrange", jerseyMaterial, "jerseyOrange", 0), "jerseyOrange");
+		GameRegistry.registerItem(jerseyPurple = new ItemHeadband(0, "jerseyPurple", jerseyMaterial, "jerseyPurple", 0), "jerseyPurple");
+		
+		// name, durability (same as leather), damageReduction, enchantability
+		headBandMaterial = EnumHelper.addArmorMaterial("headBandMaterial", 5, new int[] { 1, 3, 2, 1 }, 15);		
+		GameRegistry.registerItem(headband = new ItemHeadband(0, "headband", headBandMaterial, "headband", 0), "headband");
+		GameRegistry.registerItem(headbandKeeper = new ItemHeadband(1, "headbandKeeper", headBandMaterial, "headbandKeeper", 0), "headbandKeeper");
+		GameRegistry.registerItem(headbandSeeker = new ItemHeadband(2, "headbandSeeker", headBandMaterial, "headbandSeeker", 0), "headbandSeeker");
+		GameRegistry.registerItem(headbandChaser = new ItemHeadband(3, "headbandChaser", headBandMaterial, "headbandChaser", 0), "headbandChaser");
+		GameRegistry.registerItem(headbandBeater = new ItemHeadband(4, "headbandBeater", headBandMaterial, "headbandBeater", 0), "headbandBeater");
 	}
 
 	public static void init() {

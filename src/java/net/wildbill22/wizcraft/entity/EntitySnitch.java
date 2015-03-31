@@ -222,8 +222,7 @@ public class EntitySnitch extends EntityFlying {
 		
 	}
 	
-	public boolean interact(EntityPlayer entityplayer)
-    {
+	public boolean interact(EntityPlayer entityplayer) {
 		ItemStack itemstack = entityplayer.inventory.getCurrentItem();
 		float distance = this.getDistanceToEntity(entityplayer);
 		System.out.println(distance);
