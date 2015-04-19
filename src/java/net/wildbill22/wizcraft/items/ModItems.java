@@ -38,6 +38,10 @@ public class ModItems extends Item {
 	public static Item jerseyGreen;
 	public static Item jerseyOrange;
 	public static Item jerseyPurple;
+	// Food
+	public static ItemModFood pumpkinPastie; 
+	public static ItemModFood cauldronCake; 
+	public static ItemModFood butterBeer; 
 	
 	public static void preInit() {
 		quaffle = new ItemQuaffle();
@@ -55,7 +59,6 @@ public class ModItems extends Item {
 		GameRegistry.registerItem(bat, ItemBat.name);
 		GameRegistry.registerItem(bludgerGlove, ItemBludgerGlove.name);
 		GameRegistry.registerItem(bludger, ItemBludger.name);
-
 
 		// Jersey and headbands
 		// name, durability (same as leather), damageReduction, enchantability
@@ -75,6 +78,11 @@ public class ModItems extends Item {
 		GameRegistry.registerItem(headbandSeeker = new ItemHeadband(2, "headbandSeeker", headBandMaterial, "headbandSeeker", 0), "headbandSeeker");
 		GameRegistry.registerItem(headbandChaser = new ItemHeadband(3, "headbandChaser", headBandMaterial, "headbandChaser", 0), "headbandChaser");
 		GameRegistry.registerItem(headbandBeater = new ItemHeadband(4, "headbandBeater", headBandMaterial, "headbandBeater", 0), "headbandBeater");
+		
+		// Food
+		GameRegistry.registerItem(pumpkinPastie = new ItemModFood("pumpkinPastie", 4, 0.6f, false), "pumpkinPastie");
+		GameRegistry.registerItem(cauldronCake = new ItemModFood("cauldronCake", 4, 0.6f, false), "cauldronCake");
+		GameRegistry.registerItem(butterBeer = new ItemModFood("butterBeer", 4, 0.6f, false), "butterBeer");
 	}
 
 	public static void init() {

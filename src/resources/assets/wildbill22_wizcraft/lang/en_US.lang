@@ -1,5 +1,9 @@
 #Items
-#item.wildbill22_wizcraft_spear.name=Spear
+item.wildbill22_wizcraft_pumpkinPastie.name=Pumpkin Pastie
+item.wildbill22_wizcraft_cauldronCake.name=Cauldron Cake
+item.wildbill22_wizcraft_butterBeer.name=Butter Beer
+item.wildbill22_wizcraft_snitch.name=Snitch
+#item.wildbill22_wizcraft_.name=
 
 #Blocks (tiles)
 #tile.charredGround.name=Charred Ground
