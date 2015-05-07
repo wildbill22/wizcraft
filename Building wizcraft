@@ -1,0 +1,30 @@
+Building Wizcraft
+
+1) Follow all of the instructions in "Instructions for coders" to set up you local GitHub repository
+2) If you don't already have an Eclipse project for wizcraft, follow steps 3 - ??
+
+For the next steps, you can follow this tutorial 
+(https://docs.google.com/document/d/1w6uVI2dX2WeeULaZSL7_hoIsf-CE0tquy0nPfMPC7yU/edit) or do the steps below:
+3) Create a folder called modding (or whatever you want to call it).
+4) Download and install Elipse if you haven't already done this (https://www.eclipse.org/downloads/).
+5) Download and install "Java SE" if you haven't already done this (http://www.oracle.com/technetwork/java/index.html). Be sure you get the JDK not the JRE.
+6) Download the Minecraft 1.7 Src lastest recommended here: http://files.minecraftforge.net/
+7) Create a wizcraft folder under the modding folder you created above.
+8) Open the zip file (lastest recommended was forge-1.7.10-10.13.2.1291-src.zip when I wrote this), and copy the files into the wizcraft folder.
+9) Open a DOS command prompt and change to the wizcraft folder.
+10) Run: gradlew setupDecompWorkspace
+11) After the above completes, run: gradlew Eclipse
+12) Now copy the files from GitHub/wizcraft/src to modding/wizcraft/src. 
+13) Also copy the build.gradle file from GitHub/wizcraft to modding/wizcraft
+14) Run Eclipse and when prompted for a workspace, select the modding folder.
+15) From the file menu, select Import.
+16) Open the General folder to select "Existing Projects into Workspace", and press Next.
+17) At the top press Browse and select the modding/wizcraft folder.
+18) The Finish button should now be enabled, so press it.
+19) Under Package Explorer, you will now see the wizcraft project.
+
+Now you need to create a Run Configuration (this is missing from the tutorial I linked to)
+20) Select Run Configurations from the drop down by the green arrow in the task bar.
+21) Right click Java Application and select New. For the Main class enter: GradleStart
+22) Rename the Configuration to "Wizcraft client" (from the name section at the top).
+23) Run it. After this, it will appear in the drop down and be the default when you press the green run arrow.
