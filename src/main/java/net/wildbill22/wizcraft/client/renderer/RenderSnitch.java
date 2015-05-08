@@ -10,7 +10,7 @@ import net.wildbill22.wizcraft.lib.Reference;
 import org.lwjgl.opengl.GL11;
 
 public class RenderSnitch extends Render {
-	public static final ResourceLocation quaffleTexture = new ResourceLocation(Reference.MODID + ":textures/models/SnitchSkin.png");
+	public static final ResourceLocation snitchTexture = new ResourceLocation(Reference.MODID + ":textures/models/goldenSnitch.png");
 	protected ModelSnitch modelSnitch;
 	
 	public RenderSnitch() {
@@ -43,6 +43,6 @@ public class RenderSnitch extends Render {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_) {
-		return quaffleTexture;
+		return snitchTexture;
 	}
 }

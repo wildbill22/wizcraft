@@ -1,12 +1,13 @@
 package net.wildbill22.wizcraft.entity;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -30,15 +31,18 @@ public class EntitySnitch extends EntityFlying {
 	public float wingFlap=0F;
 	private boolean wingsUp=false;
 	private double moveSpeed; // Added, for 1.7.10 port
-	
+    private List targetList;
+    private final Sorter theNearestAttackableTargetSorter;
+
 	public EntitySnitch(World world)
     {
         super(world);
         setSize(0.1F, 0.1F);
         moveSpeed=0.25F;
+        theNearestAttackableTargetSorter = new Sorter(this);
     }
 	
-	public EntitySnitch(World world,EntityPlayer entityplayer)
+	public EntitySnitch(World world, EntityPlayer entityplayer)
     {
         super(world);
         setSize(0.1F, 0.1F);
@@ -51,6 +55,7 @@ public class EntitySnitch extends EntityFlying {
 		posY -= 0.10000000149011612D;
 		posZ -= MathHelper.sin((rotationYaw / 180F) * 3.141593F) * 0.16F;
 		setPosition(posX, posY, posZ);
+        theNearestAttackableTargetSorter = new Sorter(this);
     }
 	
 	public EntitySnitch(World world, double i, double j, double k) {
@@ -169,9 +174,8 @@ public class EntitySnitch extends EntityFlying {
 		
 		// find closest seeker
 		// fly away, if too far, fly randomly
-		target = findClosestPlayer();
 		if(!worldObj.isRemote)
-			target = (Entity) worldObj.playerEntities.get(0);
+			target = findClosestPlayer();
 		waypointX = posX;
 		waypointY = posY;
 		waypointZ = posZ;
@@ -242,28 +246,41 @@ public class EntitySnitch extends EntityFlying {
         
     }
 	
+	@SuppressWarnings("unchecked")
 	public Entity findClosestPlayer() {
-		float d = 0F;
-		@SuppressWarnings("rawtypes")
-		List entities = worldObj.getLoadedEntityList();
-		EntityLiving ent = null;
-		target = null;
-
-		for (int i = 0; i < entities.size(); i++) {
-			if ((Entity) entities.get(i) != null) {
-				if ((Entity) entities.get(i) instanceof EntityPlayer
-						&& this.canEntityBeSeen((Entity) entities.get(i))) {
-					ent = (EntityLiving) entities.get(i);
-					float d1 = ent.getDistanceToEntity(this);
-					if (d1 < d || target == null) {
-						d = d1;
-						target = ent;
-					}
-				}
-			}
-		}
-		return target;
+		double d0 = 20D;
+		targetList = worldObj.selectEntitiesWithinAABB(EntityPlayer.class, 
+				this.boundingBox.expand(d0, 4.0D, d0), null);
+        // Sort them to closest first
+        Collections.sort(targetList, theNearestAttackableTargetSorter);
+		if (targetList.size() > 0)
+			return (Entity) targetList.get(0);
+		else
+			return null;
 	}
+
+//	public Entity findClosestPlayer() {
+//		float d = 0F;
+//		@SuppressWarnings("rawtypes")
+//		List entities = worldObj.getLoadedEntityList();
+//		EntityLivingBase ent = null;
+//		target = null;
+//
+//		for (int i = 0; i < entities.size(); i++) {
+//			if ((Entity) entities.get(i) != null) {
+//				if ((Entity) entities.get(i) instanceof EntityPlayer
+//						&& this.canEntityBeSeen((Entity) entities.get(i))) {
+//					ent = (EntityLivingBase) entities.get(i);
+//					float d1 = ent.getDistanceToEntity(this);
+//					if (d1 < d || target == null) {
+//						d = d1;
+//						target = ent;
+//					}
+//				}
+//			}
+//		}
+//		return target;
+//	}
 	
 	public boolean isInRangeToRenderVec3D(Vec3 vec3d) {
         return true;
@@ -286,4 +303,23 @@ public class EntitySnitch extends EntityFlying {
 	public boolean canBreatheUnderwater() {
         return true;
     }	
+
+	@SuppressWarnings("rawtypes")
+	public static class Sorter implements Comparator {
+    	private final Entity theEntity;
+
+    	public Sorter(Entity p_i1662_1_) {
+            this.theEntity = p_i1662_1_;
+        }
+
+        public int compare(Entity p_compare_1_, Entity p_compare_2_) {
+            double d0 = this.theEntity.getDistanceSqToEntity(p_compare_1_);
+            double d1 = this.theEntity.getDistanceSqToEntity(p_compare_2_);
+            return d0 < d1 ? -1 : (d0 > d1 ? 1 : 0);
+        }
+
+        public int compare(Object p_compare_1_, Object p_compare_2_) {
+            return this.compare((Entity)p_compare_1_, (Entity)p_compare_2_);
+        }
+    }
 }

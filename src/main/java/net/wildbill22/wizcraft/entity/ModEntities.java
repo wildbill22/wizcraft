@@ -2,8 +2,6 @@ package net.wildbill22.wizcraft.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.wildbill22.wizcraft.WizcraftMod;
 import net.wildbill22.wizcraft.lib.Reference;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -17,7 +15,7 @@ public class ModEntities {
 	
 	public static void preInit() {
 		// Overworld eggs
-//		registerEntityEgg(EntityCreeperDragon.class, 0xd8bb9d, 0xa63c1a);
+		registerEntityEgg(EntitySnitch.class, 0xd8bb9d, 0xa63c1a);
 		
 		// Overworld mod entities 
 		EntityRegistry.registerModEntity(EntityBludger.class, Reference.MODID + EntityBludger.name, 
